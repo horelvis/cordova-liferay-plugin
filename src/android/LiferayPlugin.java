@@ -15,10 +15,11 @@ specific language governing permissions and limitations
 under the License.
 */
 
-package salvatejero.cordova.liferay;
+package org.cordova.liferay;
 
 /**
  * Created by stejeros on 21/12/2014.
+ * Modificated by Horelvis 15/04/2019
  */
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

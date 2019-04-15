@@ -3,7 +3,7 @@
 //  PhonegapLiferay
 //
 //  Created by Salvador Tejero Silva on 15/1/15.
-//
+//  Modificated by Horelvis 15/04/2019
 //
 
 #import <Cordova/CDVPlugin.h>

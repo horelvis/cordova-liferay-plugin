@@ -20,14 +20,14 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="salvatejero.cordova.liferay"
+    id="horelvis.cordova.liferay"
     version="0.2.14-dev">
     <name>Liferay</name>
     <description>Cordova Liferay Plugin</description>
     <license>Apache 2.0</license>
-    <keywords>cordova,device</keywords>
-    <repo>https://github.com/salvatejero/cordova-liferay-plugin.git</repo>
-    <issue>https://github.com/salvatejero/cordova-liferay-plugin/issues</issue>
+    <keywords>cordova,device,liferay</keywords>
+    <repo>https://github.com/horelvis/cordova-liferay-plugin.git</repo>
+    <issue>https://github.com/horelvis/cordova-liferay-plugin/issues</issue>
 
     <js-module src="www/Liferay.js" name="Liferay">
         <clobbers target="Liferay" />
@@ -37,13 +37,13 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="Liferay" >
-                <param name="android-package" value="salvatejero.cordova.liferay.LiferayPlugin"/>
+                <param name="android-package" value="org.cordova.liferay.LiferayPlugin"/>
             </feature>
-            
-            <preference name="liferay-company-default" value="10154" />
+
+            <preference name="liferay-company-default" value="20116" />
         </config-file>
 
-        <source-file src="src/android/LiferayPlugin.java" target-dir="src/salvatejero/cordova/liferay" />
+        <source-file src="src/android/LiferayPlugin.java" target-dir="src/org/cordova/liferay" />
     </platform>
 
     <platform name="ios">
