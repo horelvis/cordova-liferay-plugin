@@ -40,67 +40,67 @@ import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
 import com.liferay.mobile.android.task.callback.typed.JSONArrayAsyncTaskCallback;
 import com.liferay.mobile.android.task.callback.typed.JSONObjectAsyncTaskCallback;
-import com.liferay.mobile.android.v62.address.AddressService;
-import com.liferay.mobile.android.v62.assetcategory.AssetCategoryService;
-import com.liferay.mobile.android.v62.assetentry.AssetEntryService;
-import com.liferay.mobile.android.v62.assettag.AssetTagService;
-import com.liferay.mobile.android.v62.assetvocabulary.AssetVocabularyService;
-import com.liferay.mobile.android.v62.blogsentry.BlogsEntryService;
-import com.liferay.mobile.android.v62.bookmarksentry.BookmarksEntryService;
-import com.liferay.mobile.android.v62.bookmarksfolder.BookmarksFolderService;
-import com.liferay.mobile.android.v62.company.CompanyService;
-import com.liferay.mobile.android.v62.contact.ContactService;
-import com.liferay.mobile.android.v62.country.CountryService;
-import com.liferay.mobile.android.v62.ddlrecord.DDLRecordService;
-import com.liferay.mobile.android.v62.ddlrecordset.DDLRecordSetService;
-import com.liferay.mobile.android.v62.ddmstructure.DDMStructureService;
-import com.liferay.mobile.android.v62.ddmtemplate.DDMTemplateService;
-import com.liferay.mobile.android.v62.dlfileentry.DLFileEntryService;
-import com.liferay.mobile.android.v62.dlfileentrytype.DLFileEntryTypeService;
-import com.liferay.mobile.android.v62.dlfileversion.DLFileVersionService;
-import com.liferay.mobile.android.v62.dlfolder.DLFolderService;
-import com.liferay.mobile.android.v62.emailaddress.EmailAddressService;
-import com.liferay.mobile.android.v62.expandocolumn.ExpandoColumnService;
-import com.liferay.mobile.android.v62.expandovalue.ExpandoValueService;
-import com.liferay.mobile.android.v62.group.GroupService;
-import com.liferay.mobile.android.v62.image.ImageService;
-import com.liferay.mobile.android.v62.journalarticle.JournalArticleService;
-import com.liferay.mobile.android.v62.journalfeed.JournalFeedService;
-import com.liferay.mobile.android.v62.journalfolder.JournalFolderService;
-import com.liferay.mobile.android.v62.layout.LayoutService;
-import com.liferay.mobile.android.v62.layoutbranch.LayoutBranchService;
-import com.liferay.mobile.android.v62.layoutprototype.LayoutPrototypeService;
-import com.liferay.mobile.android.v62.layoutrevision.LayoutRevisionService;
-import com.liferay.mobile.android.v62.layoutset.LayoutSetService;
-import com.liferay.mobile.android.v62.layoutsetprototype.LayoutSetPrototypeService;
-import com.liferay.mobile.android.v62.listtype.ListTypeService;
-import com.liferay.mobile.android.v62.mbban.MBBanService;
-import com.liferay.mobile.android.v62.mbcategory.MBCategoryService;
-import com.liferay.mobile.android.v62.mbmessage.MBMessageService;
-import com.liferay.mobile.android.v62.mbthread.MBThreadService;
-import com.liferay.mobile.android.v62.mdraction.MDRActionService;
-import com.liferay.mobile.android.v62.mdrrule.MDRRuleService;
-import com.liferay.mobile.android.v62.mdrrulegroup.MDRRuleGroupService;
-import com.liferay.mobile.android.v62.mdrrulegroupinstance.MDRRuleGroupInstanceService;
-import com.liferay.mobile.android.v62.membershiprequest.MembershipRequestService;
-import com.liferay.mobile.android.v62.organization.OrganizationService;
-import com.liferay.mobile.android.v62.orglabor.OrgLaborService;
-import com.liferay.mobile.android.v62.passwordpolicy.PasswordPolicyService;
-import com.liferay.mobile.android.v62.permission.PermissionService;
-import com.liferay.mobile.android.v62.phone.PhoneService;
-import com.liferay.mobile.android.v62.portal.PortalService;
-import com.liferay.mobile.android.v62.portlet.PortletService;
-import com.liferay.mobile.android.v62.portletpreferences.PortletPreferencesService;
-import com.liferay.mobile.android.v62.repository.RepositoryService;
-import com.liferay.mobile.android.v62.resourcepermission.ResourcePermissionService;
-import com.liferay.mobile.android.v62.role.RoleService;
-import com.liferay.mobile.android.v62.team.TeamService;
-import com.liferay.mobile.android.v62.user.UserService;
-import com.liferay.mobile.android.v62.usergroup.UserGroupService;
-import com.liferay.mobile.android.v62.usergroupgrouprole.UserGroupGroupRoleService;
-import com.liferay.mobile.android.v62.usergrouprole.UserGroupRoleService;
-import com.liferay.mobile.android.v62.wikinode.WikiNodeService;
-import com.liferay.mobile.android.v62.wikipage.WikiPageService;
+import com.liferay.mobile.android.v7.address.AddressService;
+import com.liferay.mobile.android.v7.assetcategory.AssetCategoryService;
+import com.liferay.mobile.android.v7.assetentry.AssetEntryService;
+import com.liferay.mobile.android.v7.assettag.AssetTagService;
+import com.liferay.mobile.android.v7.assetvocabulary.AssetVocabularyService;
+import com.liferay.mobile.android.v7.blogsentry.BlogsEntryService;
+import com.liferay.mobile.android.v7.bookmarksentry.BookmarksEntryService;
+import com.liferay.mobile.android.v7.bookmarksfolder.BookmarksFolderService;
+import com.liferay.mobile.android.v7.company.CompanyService;
+import com.liferay.mobile.android.v7.contact.ContactService;
+import com.liferay.mobile.android.v7.country.CountryService;
+import com.liferay.mobile.android.v7.ddlrecord.DDLRecordService;
+import com.liferay.mobile.android.v7.ddlrecordset.DDLRecordSetService;
+import com.liferay.mobile.android.v7.ddmstructure.DDMStructureService;
+import com.liferay.mobile.android.v7.ddmtemplate.DDMTemplateService;
+import com.liferay.mobile.android.v7.dlfileentry.DLFileEntryService;
+import com.liferay.mobile.android.v7.dlfileentrytype.DLFileEntryTypeService;
+import com.liferay.mobile.android.v7.dlfileversion.DLFileVersionService;
+import com.liferay.mobile.android.v7.dlfolder.DLFolderService;
+import com.liferay.mobile.android.v7.emailaddress.EmailAddressService;
+import com.liferay.mobile.android.v7.expandocolumn.ExpandoColumnService;
+import com.liferay.mobile.android.v7.expandovalue.ExpandoValueService;
+import com.liferay.mobile.android.v7.group.GroupService;
+import com.liferay.mobile.android.v7.image.ImageService;
+import com.liferay.mobile.android.v7.journalarticle.JournalArticleService;
+import com.liferay.mobile.android.v7.journalfeed.JournalFeedService;
+import com.liferay.mobile.android.v7.journalfolder.JournalFolderService;
+import com.liferay.mobile.android.v7.layout.LayoutService;
+import com.liferay.mobile.android.v7.layoutbranch.LayoutBranchService;
+import com.liferay.mobile.android.v7.layoutprototype.LayoutPrototypeService;
+import com.liferay.mobile.android.v7.layoutrevision.LayoutRevisionService;
+import com.liferay.mobile.android.v7.layoutset.LayoutSetService;
+import com.liferay.mobile.android.v7.layoutsetprototype.LayoutSetPrototypeService;
+import com.liferay.mobile.android.v7.listtype.ListTypeService;
+import com.liferay.mobile.android.v7.mbban.MBBanService;
+import com.liferay.mobile.android.v7.mbcategory.MBCategoryService;
+import com.liferay.mobile.android.v7.mbmessage.MBMessageService;
+import com.liferay.mobile.android.v7.mbthread.MBThreadService;
+import com.liferay.mobile.android.v7.mdraction.MDRActionService;
+import com.liferay.mobile.android.v7.mdrrule.MDRRuleService;
+import com.liferay.mobile.android.v7.mdrrulegroup.MDRRuleGroupService;
+import com.liferay.mobile.android.v7.mdrrulegroupinstance.MDRRuleGroupInstanceService;
+import com.liferay.mobile.android.v7.membershiprequest.MembershipRequestService;
+import com.liferay.mobile.android.v7.organization.OrganizationService;
+import com.liferay.mobile.android.v7.orglabor.OrgLaborService;
+import com.liferay.mobile.android.v7.passwordpolicy.PasswordPolicyService;
+import com.liferay.mobile.android.v7.permission.PermissionService;
+import com.liferay.mobile.android.v7.phone.PhoneService;
+import com.liferay.mobile.android.v7.portal.PortalService;
+import com.liferay.mobile.android.v7.portlet.PortletService;
+import com.liferay.mobile.android.v7.portletpreferences.PortletPreferencesService;
+import com.liferay.mobile.android.v7.repository.RepositoryService;
+import com.liferay.mobile.android.v7.resourcepermission.ResourcePermissionService;
+import com.liferay.mobile.android.v7.role.RoleService;
+import com.liferay.mobile.android.v7.team.TeamService;
+import com.liferay.mobile.android.v7.user.UserService;
+import com.liferay.mobile.android.v7.usergroup.UserGroupService;
+import com.liferay.mobile.android.v7.usergroupgrouprole.UserGroupGroupRoleService;
+import com.liferay.mobile.android.v7.usergrouprole.UserGroupRoleService;
+import com.liferay.mobile.android.v7.wikinode.WikiNodeService;
+import com.liferay.mobile.android.v7.wikipage.WikiPageService;
 
 public class LiferayPlugin extends CordovaPlugin {
 
@@ -122,7 +122,7 @@ public class LiferayPlugin extends CordovaPlugin {
 
 				doConnect(callbackContext, serverIp, userName, password);
 				return true;
-				
+
 			} else if(GET_CONNECT.equals(action)) {
 				String classNameId = args.getString(0);
 				getObjectModel(callbackContext, classNameId , args.getString(1), args.getJSONArray(2));
@@ -138,17 +138,17 @@ public class LiferayPlugin extends CordovaPlugin {
 	}
 
 	private void getObjectModel(final CallbackContext callbackContext, String className, String methodName, JSONArray values) throws Exception{
-		
+
 		JSONArray jsonArrayInstance = new JSONArray();
 		JSONObject jsonObjectInstance = new JSONObject();
-		
+
 		JSONObjectAsyncTaskCallback callBackJSONObject = new JSONObjectAsyncTaskCallback() {
-			
+
 			@Override
 			public void onFailure(Exception arg0) {
 				callbackContext.error(arg0.getMessage());
 			}
-			
+
 			@Override
 			public void onSuccess(JSONObject arg0) {
 				// TODO Auto-generated method stub
@@ -159,35 +159,35 @@ public class LiferayPlugin extends CordovaPlugin {
 			}
 
 		};
-		
+
 		JSONArrayAsyncTaskCallback callbackJSONArray = new JSONArrayAsyncTaskCallback() {
-			
+
 			@Override
 			public void onFailure(Exception arg0) {
-				callbackContext.error(arg0.getMessage());				
+				callbackContext.error(arg0.getMessage());
 			}
-			
+
 			@Override
 			public void onSuccess(JSONArray arg0) {
 				PluginResult pluginResult = new PluginResult(
 						PluginResult.Status.OK, arg0);
 				pluginResult.setKeepCallback(true);
 				callbackContext.sendPluginResult(pluginResult);
-				
+
 			}
 		};
-		
+
 		Method methodToExecute = null;
 		Object[] params = null;
 		BaseService service = getService(className);
-		
+
 		if(service == null){
 			throw new LiferayPluginException("Service not implemented");
 		}
 		Method[] methods = service.getClass().getMethods();
 		for(Method m: methods){
 			if(m.getName().toLowerCase().equals(methodName.toLowerCase())){
-				
+
 				if(values.length() != m.getParameterTypes().length){
 					throw new LiferayPluginException("Number of params error for the method " + methodName);
 				}
@@ -199,7 +199,7 @@ public class LiferayPlugin extends CordovaPlugin {
 				}else if( m.getReturnType().equals(Void.TYPE)){
 					callbackContext.success();
 				}
-				
+
 				methodToExecute = m;
 				break;
 			}
@@ -207,7 +207,7 @@ public class LiferayPlugin extends CordovaPlugin {
         if(methodToExecute == null) {
             for (Method m : methods) {
                 if (methodName.indexOf(m.getName().toLowerCase()) >= 0) {
-                    
+
                     if (values.length() != m.getParameterTypes().length) {
                         throw new LiferayPluginException("Number of params error for the method " + methodName);
                     }
@@ -219,7 +219,7 @@ public class LiferayPlugin extends CordovaPlugin {
                     } else if (m.getReturnType().equals(Void.TYPE)) {
                         callbackContext.success();
                     }
-                    
+
                     methodToExecute = m;
                     break;
                 }
@@ -228,18 +228,18 @@ public class LiferayPlugin extends CordovaPlugin {
 		if(methodToExecute == null){
 			throw new LiferayPluginException("Method " +methodName+ "not found");
 		}
-		
+
 		try {
 			methodToExecute.invoke(service, params);
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
 			throw new LiferayPluginException("Error invoking -- "+e.getMessage());
 		}
-		
+
 	}
-	
-	
-	
+
+
+
 	private Object[] getListOfParam(Method m, JSONArray values) throws JSONException{
 		List<Object> listOfParams = new ArrayList<Object>();
 		for(int i=0; i< m.getParameterTypes().length; i++){
@@ -260,7 +260,7 @@ public class LiferayPlugin extends CordovaPlugin {
 		Object[] paramsA = new Object[listOfParams.size()];
 		return listOfParams.toArray(paramsA);
 	}
-	
+
 	private void doConnect(final CallbackContext callbackContext,
 			final String urlServer, final String userName, final String password) {
 
@@ -275,22 +275,22 @@ public class LiferayPlugin extends CordovaPlugin {
 					callbackContext.sendPluginResult(pluginResult);
 				} catch (Exception e) {
 					callbackContext.error(e.getMessage());
-					
+
 				}
-				
+
 			}
 		});
 
 	}
 
-	
+
 	protected JSONObject getUser(Session session, String username) throws Exception {
 		UserService userService = new UserService(session);
-		
+
 		JSONObject user = userService.getUserByEmailAddress(preferences.getInteger("liferay-company-default", 10154), username);
-		return user;	
+		return user;
 	}
-	
+
 	protected JSONObject getGuestGroupId(Session session) throws Exception {
 		long groupId = -1;
 		GroupService groupService = new GroupService(session);
@@ -308,7 +308,7 @@ public class LiferayPlugin extends CordovaPlugin {
 		}
 		return null;
 	}
-	
+
 	private BaseService getService(String className){
 		BaseService service = null;
 		if(className.equals("com.liferay.portal.model.User")){
@@ -434,23 +434,23 @@ public class LiferayPlugin extends CordovaPlugin {
 		}else if(className.equals("com.liferay.portlet.wiki.model.WikiPage")){
 			service = new WikiPageService(session);
 		}
-		
+
 		return service;
 	}
-	
+
 	public class LiferayPluginException extends Exception {
 
 		/**
-		 * 
+		 *
 		 */
 		private static final long serialVersionUID = 1L;
-		
+
 		private String message;
-		
+
 		public LiferayPluginException(String message){
 			this.message = message;
 		}
-		
+
 		public String getMessage() {
 			return message;
 		}
