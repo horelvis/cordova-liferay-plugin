@@ -1,0 +1,27 @@
+{
+  "name": "cordova-liferay-plugin",
+  "version": "1.0.0",
+  "description": "Cordova Liferay Plugin",
+  "cordova": {
+    "id": "cordova-liferay-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horelvis/cordova-liferay-plugin.git"
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "liferay"
+  ],
+  "author": "Horelvis Castillo",
+  "license": "Apache-2",
+  "bugs": {
+    "url": "https://github.com/horelvis/cordova-liferay-plugin/issues"
+  },
+  "homepage": "https://github.com/horelvis/cordova-liferay-plugin#readme"
+}
