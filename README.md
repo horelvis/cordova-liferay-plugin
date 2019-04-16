@@ -10,27 +10,26 @@ Updated to last version of Cordova and Liferay
 
 Added compatibility to LRCredentialStorage
 
-``` 
+```
 ### Supported versions: (Authentication)
 
 - Android: 6.2.0.22.
 - IOS: 6.2.0.21.
 - WP
-``` 
+```
 
-``` 
+```
 Liferay.connect(null, null, 'http://10.0.2.2:8080', 'test@liferay.com', 'test' );
-``` 
+```
 ## Installation
-``` 
-cordova plugin add https://github.com/salvatejero/cordova-liferay-plugin.git
-``` 
+```
+cordova plugin add https://github.com/horelvis/cordova-liferay-plugin.git
+```
 
 ### Supported Platforms:
 
 - Android.
 - IOS.
-- WP
 
 ##Requirements:
 
@@ -44,7 +43,7 @@ This plugin requires Liferay SDK.
 
 ### Quick Example
 
-``` 
+```
 
 Liferay.execute(successCallback, errorCallback, 'com.liferay.portal.model.User', 'getUserByEmailAddress', ['10154', 'test@liferay.com']);
 
@@ -58,24 +57,20 @@ function successCallback(data){
 ### Roadmap: (Authentication)
 - Add LRSign to persist connection
 
-## iOS 
+## iOS
 - In iOS method invoke needs a last parameter NSError. I include it and show it in errorCallback.
 - In iOS methods name are different to Android and WP API. You can choose whichever.
 
-``` 
+```
 Liferay.execute(successCallback, errorCallback, 'com.liferay.portal.model.User', 'getUserByEmailAddress', ['10154', 'test@liferay.com']);
 
 Liferay.execute(successCallback, errorCallback, 'com.liferay.portal.model.User', 'getUserByEmailAddressWithCompanyId', ['10154', 'test@liferay.com']);
 
 //both invoke return the same and works in any platform.
 
-``` 
-## Windows Phone 8
-
-- In Windows Phone methods name are different to Android and IOS API. You can choose whichever
 
 ## ClassNames Implemented
-``` 
+```
 -Portal
 -Permission
 -com.liferay.portal.model.Address
@@ -137,4 +132,4 @@ Liferay.execute(successCallback, errorCallback, 'com.liferay.portal.model.User',
 -com.liferay.portal.model.UserGroupRole
 -com.liferay.portlet.wiki.model.WikiNode
 -com.liferay.portlet.wiki.model.WikiPage
-``` 
+```

@@ -20,8 +20,8 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="horelvis.cordova.liferay"
-    version="0.2.14-dev">
+    id="cordova-liferay7-plugin"
+    version="1.0.0">
     <name>Liferay</name>
     <description>Cordova Liferay Plugin</description>
     <license>Apache 2.0</license>
