@@ -139,6 +139,7 @@
     LRSession *session = [LRCredentialStorage getSession];
     [session setCallback: self];
     LRBaseService *service = nil;
+
     if ([className isEqualToString:@"com.liferay.portal.model.User"]) {
         service = [[LRUserService_v7 alloc]initWithSession:session];
     }else  if ([className isEqualToString:@"com.liferay.portal.model.Address"]) {
@@ -261,6 +262,11 @@
         service = [[LRWikiNodeService_v7 alloc]initWithSession:session];
     }else  if ([className isEqualToString:@"com.liferay.portlet.wiki.model.WikiPage"]) {
         service = [[LRWikiPageService_v7 alloc]initWithSession:session];
+    }else {
+      //Added by Horelvis Castillo
+      Class serviceClass = NSClassFromString (className);
+      service = [[serviceClass alloc]initWithSession:session];
+
     }
 
     return service;
