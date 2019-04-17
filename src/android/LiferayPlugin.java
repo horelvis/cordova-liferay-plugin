@@ -126,8 +126,8 @@ public class LiferayPlugin extends CordovaPlugin {
 		Log.i(TAG, action);
 		try {
 			if (ACTION_CONNECT.equals(action)) {
-				String userName = args.getString(1);
 				String serverIp = args.getString(0);
+				String userName = args.getString(1);
 				String password = args.getString(2);
 
 				doConnect(callbackContext, serverIp, userName, password);
@@ -168,8 +168,6 @@ public class LiferayPlugin extends CordovaPlugin {
 				callbackContext.success(result);
 			}
 		};
-
-
 
 		Callback callBackJSONObject = new JSONObjectCallback() {
 
@@ -283,8 +281,7 @@ public class LiferayPlugin extends CordovaPlugin {
 				session = new SessionImpl(urlServer, new BasicAuthentication(userName, password));
 				try {
 					JSONObject user = getUser(session, userName);
-					PluginResult pluginResult = new PluginResult(
-							PluginResult.Status.OK, user);
+					PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, user);
 					pluginResult.setKeepCallback(true);
 					callbackContext.success(user);
 				} catch (Exception e) {
@@ -324,130 +321,13 @@ public class LiferayPlugin extends CordovaPlugin {
 	}
 
 	private BaseService getService(String className){
-		BaseService service = null;
-		if(className.equals("com.liferay.portal.model.User")){
-			service = new UserService(session);
-		}else if(className.equals("com.liferay.portal.model.Address")){
-			service = new AddressService(session);
-		}else if(className.equals("com.liferay.portlet.asset.model.AssetCategory")){
-			service = new AssetCategoryService(session);
-		}else if(className.equals("com.liferay.portlet.asset.model.AssetEntry")){
-			service = new AssetEntryService(session);
-		}else if(className.equals("com.liferay.portlet.asset.model.AssetTag")){
-			service = new AssetTagService(session);
-		}else if(className.equals("com.liferay.portlet.asset.model.AssetVocabulary")){
-			service = new AssetVocabularyService(session);
-		}else if(className.equals("com.liferay.portlet.blogs.model.BlogsEntry")){
-			service = new BlogsEntryService(session);
-		}else if(className.equals("com.liferay.portlet.bookmarks.model.BookmarksEntry")){
-			service = new BookmarksEntryService(session);
-		}else if(className.equals("com.liferay.portlet.bookmarks.model.BookmarksFolder")){
-			service = new BookmarksFolderService(session);
-		}else if(className.equals("com.liferay.portal.model.Company")){
-			service = new CompanyService(session);
-		}else if(className.equals("com.liferay.portal.model.Contact")){
-			service = new ContactService(session);
-		}else if(className.equals("com.liferay.portal.model.Country")){
-			service = new CountryService(session);
-		}else if(className.equals("com.liferay.portlet.dynamicdatalists.model.DDLRecord")){
-			service = new DDLRecordService(session);
-		}else if(className.equals("com.liferay.portlet.dynamicdatalists.model.DDLRecordSet")){
-			service = new DDLRecordSetService(session);
-		}else if(className.equals("com.liferay.portlet.dynamicdatamapping.model.DDMStructure")){
-			service = new DDMStructureService(session);
-		}else if(className.equals("com.liferay.portlet.dynamicdatamapping.model.DDMTemplate")){
-			service = new DDMTemplateService(session);
-		}else if(className.equals("com.liferay.portlet.documentlibrary.model.DLFileEntry")){
-			service = new DLFileEntryService(session);
-		}else if(className.equals("com.liferay.portlet.documentlibrary.model.DLFileEntryType")){
-			service = new DLFileEntryTypeService(session);
-		}else if(className.equals("com.liferay.portlet.documentlibrary.model.DLFileVersion")){
-			service = new DLFileVersionService(session);
-		}else if(className.equals("com.liferay.portlet.documentlibrary.model.DLFolder")){
-			service = new DLFolderService(session);
-		}else if(className.equals("com.liferay.portal.model.EmailAddress")){
-			service = new EmailAddressService(session);
-		}else if(className.equals("com.liferay.portlet.expando.model.ExpandoColumn")){
-			service = new ExpandoColumnService(session);
-		}else if(className.equals("com.liferay.portlet.expando.model.ExpandoValue")){
-			service = new ExpandoValueService(session);
-		}else if(className.equals("com.liferay.portal.model.Group")){
-			service = new GroupService(session);
-		}else if(className.equals("com.liferay.portal.model.Image")){
-			service = new ImageService(session);
-		}else if(className.equals("com.liferay.portlet.journal.model.JournalArticle")){
-			service = new JournalArticleService(session);
-		}else if(className.equals("com.liferay.portlet.journal.model.JournalFeed")){
-			service = new JournalFeedService(session);
-		}else if(className.equals("com.liferay.portlet.journal.model.JournalFolder")){
-			service = new JournalFolderService(session);
-		}else if(className.equals("com.liferay.portal.model.Layout")){
-			service = new LayoutService(session);
-		}else if(className.equals("com.liferay.portal.model.LayoutBranch")){
-			service = new LayoutBranchService(session);
-		}else if(className.equals("com.liferay.portal.model.LayoutPrototype")){
-			service = new LayoutPrototypeService(session);
-		}else if(className.equals("com.liferay.portal.model.LayoutRevision")){
-			service = new LayoutRevisionService(session);
-		}else if(className.equals("com.liferay.portal.model.LayoutSet")){
-			service = new LayoutSetService(session);
-		}else if(className.equals("com.liferay.portal.model.LayoutSetPrototype")){
-			service = new LayoutSetPrototypeService(session);
-		}else if(className.equals("com.liferay.portal.model.ListType")){
-			service = new ListTypeService(session);
-		}else if(className.equals("com.liferay.portlet.messageboards.model.MBBan")){
-			service = new MBBanService(session);
-		}else if(className.equals("com.liferay.portlet.messageboards.model.MBCategory")){
-			service = new MBCategoryService(session);
-		}else if(className.equals("com.liferay.portlet.messageboards.model.MBMessage")){
-			service = new MBMessageService(session);
-		}else if(className.equals("com.liferay.portlet.messageboards.model.MBThread")){
-			service = new MBThreadService(session);
-		}else if(className.equals("com.liferay.portlet.mobiledevicerules.model.MDRAction")){
-			service = new MDRActionService(session);
-		}else if(className.equals("com.liferay.portlet.mobiledevicerules.model.MDRRule")){
-			service = new MDRRuleService(session);
-		}else if(className.equals("com.liferay.portlet.mobiledevicerules.model.MDRRuleGroup")){
-			service = new MDRRuleGroupService(session);
-		}else if(className.equals("com.liferay.portlet.mobiledevicerules.model.MDRRuleGroupInstance")){
-			service = new MDRRuleGroupInstanceService(session);
-		}else if(className.equals("com.liferay.portal.model.MembershipRequest")){
-			service = new MembershipRequestService(session);
-		}else if(className.equals("com.liferay.portal.model.Organization")){
-			service = new OrganizationService(session);
-		}else if(className.equals("com.liferay.portal.model.OrgLabor")){
-			service = new OrgLaborService(session);
-		}else if(className.equals("com.liferay.portal.model.PasswordPolicy")){
-			service = new PasswordPolicyService(session);
-		}else if(className.equals("Permission")){
-			service = new PermissionService(session);
-		}else if(className.equals("com.liferay.portal.model.Phone")){
-			service = new PhoneService(session);
-		}else if(className.equals("Portal")){
-			service = new PortalService(session);
-		}else if(className.equals("com.liferay.portal.model.Portlet")){
-			service = new PortletService(session);
-		}else if(className.equals("com.liferay.portal.model.PortletPreferences")){
-			service = new PortletPreferencesService(session);
-		}else if(className.equals("com.liferay.portal.model.Repository")){
-			service = new RepositoryService(session);
-		}else if(className.equals("com.liferay.portal.model.ResourcePermission")){
-			service = new ResourcePermissionService(session);
-		}else if(className.equals("com.liferay.portal.model.Role")){
-			service = new RoleService(session);
-		}else if(className.equals("com.liferay.portal.model.Team")){
-			service = new TeamService(session);
-		}else if(className.equals("com.liferay.portal.model.UserGroup")){
-			service = new UserGroupService(session);
-		}else if(className.equals("com.liferay.portal.model.UserGroupGroupRole")){
-			service = new UserGroupGroupRoleService(session);
-		}else if(className.equals("com.liferay.portal.model.UserGroupRole")){
-			service = new UserGroupRoleService(session);
-		}else if(className.equals("com.liferay.portlet.wiki.model.WikiNode")){
-			service = new WikiNodeService(session);
-		}else if(className.equals("com.liferay.portlet.wiki.model.WikiPage")){
-			service = new WikiPageService(session);
-		}
+
+		// creating an object by getting Constructor object (with parameters) and calling newInstance (with parameters) on it
+		Class<?> goatClass = Class.forName(className);
+
+		Constructor constructor = goatClass.getConstructor(new Class[] {Session.class});
+
+    BaseService service  = (BaseService) constructor.newInstance(new Object[] { session });
 
 		return service;
 	}

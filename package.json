@@ -1,6 +1,6 @@
 {
   "name": "cordova-liferay7-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cordova Liferay7 Plugin",
   "cordova": {
     "id": "cordova-liferay7-plugin",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/horelvis/cordova-liferay-plugin.git"
+    "url": "git+https://github.com/horelvis/cordova-liferay7-plugin.git"
   },
   "keywords": [
     "cordova",
@@ -21,7 +21,7 @@
   "author": "Horelvis Castillo",
   "license": "Apache-2",
   "bugs": {
-    "url": "https://github.com/horelvis/cordova-liferay-plugin/issues"
+    "url": "https://github.com/horelvis/cordova-liferay7-plugin/issues"
   },
-  "homepage": "https://github.com/horelvis/cordova-liferay-plugin#readme"
+  "homepage": "https://github.com/horelvis/cordova-liferay7-plugin#readme"
 }
