@@ -27,7 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,11 +38,12 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.liferay.mobile.android.auth.basic.BasicAuthentication;
+import com.liferay.mobile.android.callback.Callback;
+import com.liferay.mobile.android.callback.typed.JSONArrayCallback;
+import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.task.callback.typed.JSONArrayAsyncTaskCallback;
-import com.liferay.mobile.android.task.callback.typed.JSONObjectAsyncTaskCallback;
 import com.liferay.mobile.android.v7.address.AddressService;
 import com.liferay.mobile.android.v7.assetcategory.AssetCategoryService;
 import com.liferay.mobile.android.v7.assetentry.AssetEntryService;
@@ -103,6 +106,7 @@ import com.liferay.mobile.android.v7.usergrouprole.UserGroupRoleService;
 import com.liferay.mobile.android.v7.wikinode.WikiNodeService;
 import com.liferay.mobile.android.v7.wikipage.WikiPageService;
 
+
 public class LiferayPlugin extends CordovaPlugin {
 
 	private static final String TAG = "LIFERAY_PLUGIN";
@@ -110,6 +114,11 @@ public class LiferayPlugin extends CordovaPlugin {
 	private static final String GET_CONNECT = "execute";
 
 	private static Session session;
+
+	@Override
+	public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+		super.initialize(cordova, webView);
+	}
 
 	public boolean execute(String action, JSONArray args,
 			CallbackContext callbackContext) {
@@ -143,25 +152,26 @@ public class LiferayPlugin extends CordovaPlugin {
 		JSONArray jsonArrayInstance = new JSONArray();
 		JSONObject jsonObjectInstance = new JSONObject();
 
-		JSONObjectAsyncTaskCallback callBackJSONObject = new JSONObjectAsyncTaskCallback() {
+		Callback callbackJSONArray = new JSONArrayCallback() {
 
 			@Override
-			public void onFailure(Exception arg0) {
-				callbackContext.error(arg0.getMessage());
+			public void onFailure(Exception exception) {
+				callbackContext.error(exception.getMessage());
 			}
 
 			@Override
-			public void onSuccess(JSONObject arg0) {
+			public void onSuccess(JSONArray result) {
 				// TODO Auto-generated method stub
 				PluginResult pluginResult = new PluginResult(
-						PluginResult.Status.OK, arg0);
+						PluginResult.Status.OK, result);
 				pluginResult.setKeepCallback(true);
-				callbackContext.sendPluginResult(pluginResult);
+				callbackContext.success(result);
 			}
-
 		};
 
-		JSONArrayAsyncTaskCallback callbackJSONArray = new JSONArrayAsyncTaskCallback() {
+
+
+		Callback callBackJSONObject = new JSONObjectCallback() {
 
 			@Override
 			public void onFailure(Exception arg0) {
@@ -169,14 +179,17 @@ public class LiferayPlugin extends CordovaPlugin {
 			}
 
 			@Override
-			public void onSuccess(JSONArray arg0) {
+			public void onSuccess(JSONObject result) {
+				// TODO Auto-generated method stub
 				PluginResult pluginResult = new PluginResult(
-						PluginResult.Status.OK, arg0);
+						PluginResult.Status.OK, result);
 				pluginResult.setKeepCallback(true);
-				callbackContext.sendPluginResult(pluginResult);
-
+				callbackContext.success(result);
 			}
+
 		};
+
+
 
 		Method methodToExecute = null;
 		Object[] params = null;
@@ -273,7 +286,7 @@ public class LiferayPlugin extends CordovaPlugin {
 					PluginResult pluginResult = new PluginResult(
 							PluginResult.Status.OK, user);
 					pluginResult.setKeepCallback(true);
-					callbackContext.sendPluginResult(pluginResult);
+					callbackContext.success(user);
 				} catch (Exception e) {
 					callbackContext.error(e.getMessage());
 
@@ -295,7 +308,7 @@ public class LiferayPlugin extends CordovaPlugin {
 	protected JSONObject getGuestGroupId(Session session) throws Exception {
 		long groupId = -1;
 		GroupService groupService = new GroupService(session);
-		JSONArray groups = groupService.getUserSites();
+		JSONArray groups = groupService.getUserSitesGroups();
 		for (int i = 0; i < groups.length(); i++) {
 			JSONObject group = groups.getJSONObject(i);
 			String name = group.getString("name");

@@ -17,7 +17,7 @@ Liferay.prototype.connect = function( ipServer, userName, password,successCallba
 }
 
 Liferay.prototype.execute = function(className, method, params, successCallback, errorCallback) {
-  
+
       //if error is null then replace with empty function to silence warnings
       if(!errorCallback){
         errorCallback = function(){};

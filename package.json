@@ -1,9 +1,9 @@
 {
-  "name": "cordova-liferay-plugin",
-  "version": "1.0.0",
-  "description": "Cordova Liferay Plugin",
+  "name": "cordova-liferay7-plugin",
+  "version": "1.0.1",
+  "description": "Cordova Liferay7 Plugin",
   "cordova": {
-    "id": "cordova-liferay-plugin",
+    "id": "cordova-liferay7-plugin",
     "platforms": [
       "android",
       "ios"

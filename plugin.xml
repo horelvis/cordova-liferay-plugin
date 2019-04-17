@@ -21,9 +21,9 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova.liferay7.plugin"
-    version="1.0.0">
+    version="1.0.1">
     <name>Liferay</name>
-    <description>Cordova Liferay Plugin</description>
+    <description>Cordova Liferay7 Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,device,liferay</keywords>
     <repo>https://github.com/horelvis/cordova-liferay-plugin.git</repo>
