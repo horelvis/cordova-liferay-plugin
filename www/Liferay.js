@@ -6,11 +6,23 @@ var argscheck = require('cordova/argscheck'),
 function Liferay () { console.log('Liferay loaded');}
 
 
-Liferay.prototype.connect = function(successCallback, errorCallback, ipServer, userName, password) {
+Liferay.prototype.connect = function( ipServer, userName, password,successCallback, errorCallback) {
+
+      //if error is null then replace with empty function to silence warnings
+      if(!errorCallback){
+        errorCallback = function(){};
+      }
+
     	exec(successCallback, errorCallback, "Liferay", "connect", [ipServer, userName, password]);
 }
 
-Liferay.prototype.execute = function(successCallback, errorCallback, className, method, params) {
+Liferay.prototype.execute = function(className, method, params, successCallback, errorCallback) {
+  
+      //if error is null then replace with empty function to silence warnings
+      if(!errorCallback){
+        errorCallback = function(){};
+      }
+
     	exec(successCallback, errorCallback, "Liferay", "execute", [className, method, params]);
 }
 
