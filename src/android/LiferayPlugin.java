@@ -21,6 +21,7 @@ package org.cordova.liferay;
  * Created by stejeros on 21/12/2014.
  * Modificated by Horelvis 15/04/2019
  */
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -44,67 +45,8 @@ import com.liferay.mobile.android.callback.typed.JSONObjectCallback;
 import com.liferay.mobile.android.service.BaseService;
 import com.liferay.mobile.android.service.Session;
 import com.liferay.mobile.android.service.SessionImpl;
-import com.liferay.mobile.android.v7.address.AddressService;
-import com.liferay.mobile.android.v7.assetcategory.AssetCategoryService;
-import com.liferay.mobile.android.v7.assetentry.AssetEntryService;
-import com.liferay.mobile.android.v7.assettag.AssetTagService;
-import com.liferay.mobile.android.v7.assetvocabulary.AssetVocabularyService;
-import com.liferay.mobile.android.v7.blogsentry.BlogsEntryService;
-import com.liferay.mobile.android.v7.bookmarksentry.BookmarksEntryService;
-import com.liferay.mobile.android.v7.bookmarksfolder.BookmarksFolderService;
-import com.liferay.mobile.android.v7.company.CompanyService;
-import com.liferay.mobile.android.v7.contact.ContactService;
-import com.liferay.mobile.android.v7.country.CountryService;
-import com.liferay.mobile.android.v7.ddlrecord.DDLRecordService;
-import com.liferay.mobile.android.v7.ddlrecordset.DDLRecordSetService;
-import com.liferay.mobile.android.v7.ddmstructure.DDMStructureService;
-import com.liferay.mobile.android.v7.ddmtemplate.DDMTemplateService;
-import com.liferay.mobile.android.v7.dlfileentry.DLFileEntryService;
-import com.liferay.mobile.android.v7.dlfileentrytype.DLFileEntryTypeService;
-import com.liferay.mobile.android.v7.dlfileversion.DLFileVersionService;
-import com.liferay.mobile.android.v7.dlfolder.DLFolderService;
-import com.liferay.mobile.android.v7.emailaddress.EmailAddressService;
-import com.liferay.mobile.android.v7.expandocolumn.ExpandoColumnService;
-import com.liferay.mobile.android.v7.expandovalue.ExpandoValueService;
 import com.liferay.mobile.android.v7.group.GroupService;
-import com.liferay.mobile.android.v7.image.ImageService;
-import com.liferay.mobile.android.v7.journalarticle.JournalArticleService;
-import com.liferay.mobile.android.v7.journalfeed.JournalFeedService;
-import com.liferay.mobile.android.v7.journalfolder.JournalFolderService;
-import com.liferay.mobile.android.v7.layout.LayoutService;
-import com.liferay.mobile.android.v7.layoutbranch.LayoutBranchService;
-import com.liferay.mobile.android.v7.layoutprototype.LayoutPrototypeService;
-import com.liferay.mobile.android.v7.layoutrevision.LayoutRevisionService;
-import com.liferay.mobile.android.v7.layoutset.LayoutSetService;
-import com.liferay.mobile.android.v7.layoutsetprototype.LayoutSetPrototypeService;
-import com.liferay.mobile.android.v7.listtype.ListTypeService;
-import com.liferay.mobile.android.v7.mbban.MBBanService;
-import com.liferay.mobile.android.v7.mbcategory.MBCategoryService;
-import com.liferay.mobile.android.v7.mbmessage.MBMessageService;
-import com.liferay.mobile.android.v7.mbthread.MBThreadService;
-import com.liferay.mobile.android.v7.mdraction.MDRActionService;
-import com.liferay.mobile.android.v7.mdrrule.MDRRuleService;
-import com.liferay.mobile.android.v7.mdrrulegroup.MDRRuleGroupService;
-import com.liferay.mobile.android.v7.mdrrulegroupinstance.MDRRuleGroupInstanceService;
-import com.liferay.mobile.android.v7.membershiprequest.MembershipRequestService;
-import com.liferay.mobile.android.v7.organization.OrganizationService;
-import com.liferay.mobile.android.v7.orglabor.OrgLaborService;
-import com.liferay.mobile.android.v7.passwordpolicy.PasswordPolicyService;
-import com.liferay.mobile.android.v7.permission.PermissionService;
-import com.liferay.mobile.android.v7.phone.PhoneService;
-import com.liferay.mobile.android.v7.portal.PortalService;
-import com.liferay.mobile.android.v7.portlet.PortletService;
-import com.liferay.mobile.android.v7.portletpreferences.PortletPreferencesService;
-import com.liferay.mobile.android.v7.repository.RepositoryService;
-import com.liferay.mobile.android.v7.resourcepermission.ResourcePermissionService;
-import com.liferay.mobile.android.v7.role.RoleService;
-import com.liferay.mobile.android.v7.team.TeamService;
 import com.liferay.mobile.android.v7.user.UserService;
-import com.liferay.mobile.android.v7.usergroup.UserGroupService;
-import com.liferay.mobile.android.v7.usergroupgrouprole.UserGroupGroupRoleService;
-import com.liferay.mobile.android.v7.usergrouprole.UserGroupRoleService;
-import com.liferay.mobile.android.v7.wikinode.WikiNodeService;
-import com.liferay.mobile.android.v7.wikipage.WikiPageService;
 
 
 public class LiferayPlugin extends CordovaPlugin {
@@ -320,7 +262,7 @@ public class LiferayPlugin extends CordovaPlugin {
 		return null;
 	}
 
-	private BaseService getService(String className){
+	private BaseService getService(String className) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
 
 		// creating an object by getting Constructor object (with parameters) and calling newInstance (with parameters) on it
 		Class<?> goatClass = Class.forName(className);
