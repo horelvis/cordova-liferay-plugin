@@ -329,7 +329,7 @@
     }
     else
     {
-        cvResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsArray:[result array]];
+        cvResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsArray:result];
 
     }
     [cvResult setKeepCallbackAsBool:YES];

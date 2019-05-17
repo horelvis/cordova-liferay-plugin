@@ -209,6 +209,8 @@ public class LiferayPlugin extends CordovaPlugin {
 				listOfParams.add(values.getLong(i));
 			}else if(c.getName().equals("int")){
 				listOfParams.add(values.getInt(i));
+			}else if(c.getName().equals("org.json.JSONObject")){
+				listOfParams.add(values.getJSONObject(i));
 			}
 		}
 		Object[] paramsA = new Object[listOfParams.size()];
@@ -240,7 +242,7 @@ public class LiferayPlugin extends CordovaPlugin {
 	protected JSONObject getUser(Session session, String username) throws Exception {
 		UserService userService = new UserService(session);
 
-		JSONObject user = userService.getUserByEmailAddress(preferences.getInteger("liferay-company-default", 10154), username);
+		JSONObject user = userService.getUserByEmailAddress(preferences.getInteger("liferay-company-default", 20116), username);
 		return user;
 	}
 
