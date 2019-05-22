@@ -8,6 +8,7 @@
 
 #import "LiferayPlugin.h"
 #import "LRBasicAuthentication.h"
+#import "LRGoogleAuthentication.h"
 #import "LRCallback.h"
 #import "LRCredentialStorage.h"
 
@@ -25,6 +26,20 @@
     [self getUser: params[1] withLRSession: session];
 
 }
+
+- (void)authentication:(CDVInvokedUrlCommand*)command
+{
+    NSArray *params = command.arguments;
+    int timeout = 6000;
+    callbackId = command.callbackId;
+    LRSession * session = [[LRSession alloc] initWithServer:params[0]
+                                             authentication:[[LRGoogleAuthentication alloc] initWithAuthToken:params[1] authToken:params[2]]
+                                             ];
+
+    [self getUser: params[1] withLRSession: session];
+
+}
+
 
 - (void)execute:(CDVInvokedUrlCommand*)command
 {
@@ -129,6 +144,9 @@
         [invocation invoke];
         __strong NSError *getError = *errorPointer;
         NSLog(@"%@", getError);
+    } else {
+      NSLog(@"the method '%@' is no found",methodName);
+      [self sendPluginResult:nil withErrorMessage: @"the method is no found"];
     }
 }
 
@@ -140,134 +158,9 @@
     [session setCallback: self];
     LRBaseService *service = nil;
 
-    if ([className isEqualToString:@"com.liferay.portal.model.User"]) {
-        service = [[LRUserService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Address"]) {
-        service = [[LRAddressService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.asset.model.AssetCategory"]) {
-        service = [[LRAssetCategoryService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.asset.model.AssetEntry"]) {
-        service = [[LRAssetEntryService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.asset.model.AssetTag"]) {
-        service = [[LRAssetTagService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.asset.model.AssetVocabulary"]) {
-        service = [[LRAssetVocabularyService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.blogs.model.BlogsEntry"]) {
-        service = [[LRBlogsEntryService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.bookmarks.model.BookmarksEntry"]) {
-        service = [[LRBookmarksEntryService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.bookmarks.model.BookmarksFolder"]) {
-        service = [[LRBookmarksFolderService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Company"]) {
-        service = [[LRCompanyService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Contact"]) {
-        service = [[LRContactService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Country"]) {
-        service = [[LRCountryService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.dynamicdatalists.model.DDLRecord"]) {
-        service = [[LRDDLRecordService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.dynamicdatalists.model.DDLRecordSet"]) {
-        service = [[LRDDLRecordSetService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.dynamicdatamapping.model.DDMStructure"]) {
-        service = [[LRDDMStructureService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.dynamicdatamapping.model.DDMTemplate"]) {
-        service = [[LRDDMTemplateService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.documentlibrary.model.DLFileEntry"]) {
-        service = [[LRDLFileEntryService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.documentlibrary.model.DLFileEntryType"]) {
-        service = [[LRDLFileEntryTypeService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.documentlibrary.model.DLFileVersion"]) {
-        service = [[LRDLFileVersionService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.documentlibrary.model.DLFolder"]) {
-        service = [[LRDLFolderService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.EmailAddress"]) {
-        service = [[LREmailAddressService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.expando.model.ExpandoColumn"]) {
-        service = [[LRExpandoColumnService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.expando.model.ExpandoValue"]) {
-        service = [[LRExpandoValueService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Group"]) {
-        service = [[LRGroupService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Image"]) {
-        service = [[LRImageService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.journal.model.JournalArticle"]) {
-        service = [[LRJournalArticleService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.journal.model.JournalFeed"]) {
-        service = [[LRJournalFeedService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.journal.model.JournalFolder"]) {
-        service = [[LRJournalFolderService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Layout"]) {
-        service = [[LRLayoutService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.LayoutBranch"]) {
-        service = [[LRLayoutBranchService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.LayoutPrototype"]) {
-        service = [[LRLayoutPrototypeService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.LayoutRevision"]) {
-        service = [[LRLayoutRevisionService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.LayoutSet"]) {
-        service = [[LRLayoutSetService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.LayoutSetPrototype"]) {
-        service = [[LRLayoutSetPrototypeService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.ListType"]) {
-        service = [[LRListTypeService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.messageboards.model.MBBan"]) {
-        service = [[LRMBBanService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.messageboards.model.MBCategory"]) {
-        service = [[LRMBCategoryService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.messageboards.model.MBMessage"]) {
-        service = [[LRMBMessageService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.messageboards.model.MBThread"]) {
-        service = [[LRMBThreadService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.mobiledevicerules.model.MDRAction"]) {
-        service = [[LRMDRActionService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.mobiledevicerules.model.MDRRule"]) {
-        service = [[LRMDRRuleService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.mobiledevicerules.model.MDRRuleGroup"]) {
-        service = [[LRMDRRuleGroupService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.mobiledevicerules.model.MDRRuleGroupInstance"]) {
-        service = [[LRMDRRuleGroupInstanceService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.MembershipRequest"]) {
-        service = [[LRMembershipRequestService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Organization"]) {
-        service = [[LROrganizationService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.OrgLabor"]) {
-        service = [[LROrgLaborService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.PasswordPolicy"]) {
-        service = [[LRPasswordPolicyService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"Permission"]) {
-        service = [[LRPermissionService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Phone"]) {
-        service = [[LRPhoneService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"Portal"]) {
-        service = [[LRPortalService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Portlet"]) {
-        service = [[LRPortletService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.PortletPreferences"]) {
-        service = [[LRPortletPreferencesService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Repository"]) {
-        service = [[LRRepositoryService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.ResourcePermission"]) {
-        service = [[LRResourcePermissionService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Role"]) {
-        service = [[LRRoleService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.Team"]) {
-        service = [[LRTeamService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.UserGroup"]) {
-        service = [[LRUserGroupService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.UserGroupGroupRole"]) {
-        service = [[LRUserGroupGroupRoleService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portal.model.UserGroupRole"]) {
-        service = [[LRUserGroupRoleService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.wiki.model.WikiNode"]) {
-        service = [[LRWikiNodeService_v7 alloc]initWithSession:session];
-    }else  if ([className isEqualToString:@"com.liferay.portlet.wiki.model.WikiPage"]) {
-        service = [[LRWikiPageService_v7 alloc]initWithSession:session];
-    }else {
-      //Added by Horelvis Castillo
-      Class serviceClass = NSClassFromString (className);
-      service = [[serviceClass alloc]initWithSession:session];
-
-    }
+    //Added by Horelvis Castillo
+    Class serviceClass = NSClassFromString (className);
+    service = [[serviceClass alloc]initWithSession:session];
 
     return service;
 }

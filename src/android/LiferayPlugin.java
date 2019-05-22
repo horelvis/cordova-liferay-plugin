@@ -62,6 +62,7 @@ public class LiferayPlugin extends CordovaPlugin {
 		super.initialize(cordova, webView);
 	}
 
+
 	public boolean execute(String action, JSONArray args,
 			CallbackContext callbackContext) {
 
@@ -158,27 +159,7 @@ public class LiferayPlugin extends CordovaPlugin {
 				break;
 			}
 		}
-        if(methodToExecute == null) {
-            for (Method m : methods) {
-                if (methodName.indexOf(m.getName().toLowerCase()) >= 0) {
 
-                    if (values.length() != m.getParameterTypes().length) {
-                        throw new LiferayPluginException("Number of params error for the method " + methodName);
-                    }
-                    params = getListOfParam(m, values);
-                    if (m.getReturnType().isInstance(jsonArrayInstance)) {
-                        session.setCallback(callbackJSONArray);
-                    } else if (m.getReturnType().isInstance(jsonObjectInstance)) {
-                        session.setCallback(callBackJSONObject);
-                    } else if (m.getReturnType().equals(Void.TYPE)) {
-                        callbackContext.success();
-                    }
-
-                    methodToExecute = m;
-                    break;
-                }
-            }
-        }
 		if(methodToExecute == null){
 			throw new LiferayPluginException("Method " +methodName+ "not found");
 		}

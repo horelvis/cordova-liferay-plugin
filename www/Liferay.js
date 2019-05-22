@@ -16,6 +16,16 @@ Liferay.prototype.connect = function( ipServer, userName, password,successCallba
     	exec(successCallback, errorCallback, "Liferay", "connect", [ipServer, userName, password]);
 }
 
+Liferay.prototype.authentication = function( ipServer, username, token, successCallback, errorCallback) {
+
+      //if error is null then replace with empty function to silence warnings
+      if(!errorCallback){
+        errorCallback = function(){};
+      }
+
+    	exec(successCallback, errorCallback, "Liferay", "authentication", [ipServer, username, token ]);
+}
+
 Liferay.prototype.execute = function(className, method, params, successCallback, errorCallback) {
 
       //if error is null then replace with empty function to silence warnings
