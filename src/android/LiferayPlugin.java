@@ -54,6 +54,7 @@ public class LiferayPlugin extends CordovaPlugin {
 	private static final String TAG = "LIFERAY_PLUGIN";
 	private static final String ACTION_CONNECT = "connect";
 	private static final String GET_CONNECT = "execute";
+	private static final String GET_AUTENTICATION = "authentication";
 
 	private static Session session;
 
@@ -80,6 +81,12 @@ public class LiferayPlugin extends CordovaPlugin {
 				String classNameId = args.getString(0);
 				getObjectModel(callbackContext, classNameId , args.getString(1), args.getJSONArray(2));
 				return true;
+			} else if(GET_AUTENTICATION.equals(action)) {
+				String serverIp = args.getString(0);
+				String userName = args.getString(1);
+				String token = args.getString(2);
+				doAutentication(callbackContext, serverIp,userName, token);
+				return true;
 			} else {
 				return false;
 			}
@@ -89,6 +96,7 @@ public class LiferayPlugin extends CordovaPlugin {
 			return false;
 		}
 	}
+
 
 	private void getObjectModel(final CallbackContext callbackContext, String className, String methodName, JSONArray values) throws Exception{
 
@@ -217,6 +225,24 @@ public class LiferayPlugin extends CordovaPlugin {
 			}
 		});
 
+	}
+
+	private void doAutentication(final CallbackContext callbackContext,final String urlServer,final String userName, final String token) {
+		cordova.getThreadPool().execute(new Runnable() {
+			public void run() {
+				session = new SessionImpl(urlServer, new TokenAuthentication(token));
+				try {
+					JSONObject user = getUser(session, userName);
+					PluginResult pluginResult = new PluginResult(PluginResult.Status.OK, user);
+					pluginResult.setKeepCallback(true);
+					callbackContext.success(user);
+				} catch (Exception e) {
+					callbackContext.error(e.getMessage());
+
+				}
+
+			}
+		});
 	}
 
 

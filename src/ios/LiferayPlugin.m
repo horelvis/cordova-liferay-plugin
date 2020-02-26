@@ -176,9 +176,17 @@
     NSLog(@"%@", error);
 
     if(user != nil){
-        LRBasicAuthentication *authentication = (LRBasicAuthentication *)session.authentication;
-        [LRCredentialStorage storeCredentialForServer: session.server
-                                             username: authentication.username password: authentication.password];
+      
+      if ([session.authentication isKindOfClass:[LRBasicAuthentication class]]) {
+          LRBasicAuthentication *basicAuthentication = (LRBasicAuthentication *)session.authentication;
+          [LRCredentialStorage storeCredentialForServer: session.server
+                                               username: basicAuthentication.username password: basicAuthentication.password];
+      } else {
+          LRGoogleAuthentication *googleAuthentication = (LRGoogleAuthentication *)session.authentication;
+          [LRCredentialStorage removeCredential];
+          [LRCredentialStorage storeCredentialForOauth: session.server
+                                               username: googleAuthentication.username token: googleAuthentication.authToken];
+      }
 
     }
     [self sendPluginResult:user withErrorMessage: [error localizedDescription]];

@@ -1,6 +1,6 @@
 {
   "name": "cordova-liferay7-plugin",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Cordova Liferay7 Plugin",
   "cordova": {
     "id": "cordova-liferay7-plugin",
