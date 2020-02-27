@@ -56,5 +56,7 @@
 
         <header-file src="src/ios/LiferayPlugin.h" />
         <source-file src="src/ios/LiferayPlugin.m" />
+        <header-file src="src/ios/Callback.h" />
+        <source-file src="src/ios/Callback.m" />
     </platform>
 </plugin>

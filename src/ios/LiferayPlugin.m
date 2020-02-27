@@ -14,7 +14,7 @@
 
 @implementation LiferayPlugin
 
-@synthesize callbackId;
+NSString *callbackId;
 
 - (void)connect:(CDVInvokedUrlCommand*)command
 {
@@ -47,7 +47,11 @@
     callbackId = command.callbackId;
     NSArray *params = command.arguments;
     LRSession *session = [LRCredentialStorage getSession];
-    [session setCallback: self];
+
+    Callback *callback = [[Callback alloc] init:self.callbackId  liferayPlugin:self];
+
+   [session setCallback: callback];
+
     if(session != nil && session.authentication != nil){
 
         [self objectModelWithClassName:params[0] withMethodName:params[1] withParams:params[2]];
@@ -55,6 +59,7 @@
 
         [self sendPluginResult:nil withErrorMessage: @"No session actived"];
     }
+
 }
 
 -(void) objectModelWithClassName:(NSString*)className withMethodName:(NSString*) methodName withParams: (NSArray*) jsonArray
@@ -155,7 +160,11 @@
 -(LRBaseService*) serviceWithClassName:(NSString*) className
 {
     LRSession *session = [LRCredentialStorage getSession];
-    [session setCallback: self];
+
+    Callback *callback = [[Callback alloc] init:self.callbackId  liferayPlugin:self];
+
+    [session setCallback: callback];
+
     LRBaseService *service = nil;
 
     //Added by Horelvis Castillo
@@ -176,7 +185,7 @@
     NSLog(@"%@", error);
 
     if(user != nil){
-      
+
       if ([session.authentication isKindOfClass:[LRBasicAuthentication class]]) {
           LRBasicAuthentication *basicAuthentication = (LRBasicAuthentication *)session.authentication;
           [LRCredentialStorage storeCredentialForServer: session.server

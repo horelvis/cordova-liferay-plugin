@@ -17,8 +17,7 @@
 @interface LiferayPlugin :  CDVPlugin{
 }
 
-@property (copy) NSString* callbackId;
-
+@property NSString* callbackId;
 
 - (void)connect:(CDVInvokedUrlCommand*)command;
 
@@ -26,5 +25,6 @@
 
 - (void)execute:(CDVInvokedUrlCommand*)command;
 
+- (void)success:(id)result callbackId:(NSString *)callbackId;
 
 @end
